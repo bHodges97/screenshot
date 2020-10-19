@@ -5,12 +5,22 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace screenshotter
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll")]
+        public static extern IntPtr FindWindow(String sClassName, String sAppName);
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        private IntPtr _hwnd;
+
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +28,25 @@ namespace screenshotter
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            _hwnd = FindWindow(null, "ScreenShotter");
+            Console.WriteLine(_hwnd);
+            RegisterHotKey(_hwnd, 1, (int)0x0002, (int)Keys.A);
 
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UnregisterHotKey(_hwnd, 1);
+        }
+
+        protected override void WndProc(ref Message keyPressed)
+        {          
+            if (keyPressed.Msg == 0x0312)
+            {
+                Console.WriteLine("hi");
+            }
+            base.WndProc(ref keyPressed);
+        }
     }
+
 }
