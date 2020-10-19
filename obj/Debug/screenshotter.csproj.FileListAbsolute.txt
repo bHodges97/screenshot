@@ -1,0 +1,8 @@
+D:\nextcloud\documents\visualstudio\screenshotter\bin\Debug\screenshotter.exe
+D:\nextcloud\documents\visualstudio\screenshotter\bin\Debug\screenshotter.pdb
+D:\nextcloud\documents\visualstudio\screenshotter\obj\Debug\screenshotter.Form1.resources
+D:\nextcloud\documents\visualstudio\screenshotter\obj\Debug\screenshotter.Properties.Resources.resources
+D:\nextcloud\documents\visualstudio\screenshotter\obj\Debug\screenshotter.csproj.GenerateResource.cache
+D:\nextcloud\documents\visualstudio\screenshotter\obj\Debug\screenshotter.csproj.CoreCompileInputs.cache
+D:\nextcloud\documents\visualstudio\screenshotter\obj\Debug\screenshotter.exe
+D:\nextcloud\documents\visualstudio\screenshotter\obj\Debug\screenshotter.pdb
