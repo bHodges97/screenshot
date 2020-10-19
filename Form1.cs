@@ -30,6 +30,11 @@ namespace screenshotter
         {
             hwnd = FindWindow(null, "ScreenShotter");
             RegisterHotKey(hwnd, 1, (int)0x0002, (int)Keys.A);
+            for(int i = 0; i < Screen.AllScreens.Length; i++)
+            {
+                comboBox1.Items.Add($"Screen {i}");
+            }
+            comboBox1.SelectedIndex = 0;
 
         }
 
@@ -42,8 +47,7 @@ namespace screenshotter
         {          
             if (keyPressed.Msg == 0x0312)
             {
-                Console.WriteLine("hi");
-                Rectangle bounds= Screen.AllScreens[0].Bounds;
+                Rectangle bounds= Screen.AllScreens[comboBox1.SelectedIndex].Bounds;
                 Bitmap captureBitmap = new Bitmap(bounds.Width,bounds.Height);
                 Graphics captureGraphics = Graphics.FromImage(captureBitmap);
                 captureGraphics.CopyFromScreen(bounds.Left, bounds.Top, 0, 0, bounds.Size);
